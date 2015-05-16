@@ -50,5 +50,6 @@ gem 'bson_ext'
 # For user auth
 gem 'devise'
 
+gem 'backbone-on-rails'
 gem 'marionette-rails'
 gem 'bootstrap-sass'
