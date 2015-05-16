@@ -13,7 +13,6 @@ user = User.create(
 )
 
 book = Book.create(
-    #_id: 1,
     isbn: "12398192381923",
     title: "Kniga!",
     authors: "Marting Heidegger, Ivan Cankar",
