@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get '/book/mybook/', to: 'book#mybook'
   resources :book
   
   devise_for :users
@@ -6,7 +7,8 @@ Rails.application.routes.draw do
 
   get 'static/index'
   
-  get '/book/lookup/:id', to: 'book#lookup'  
+  get '/book/lookup/:id', to: 'book#lookup'
+
  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

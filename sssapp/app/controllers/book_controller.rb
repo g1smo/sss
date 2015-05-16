@@ -24,4 +24,7 @@ class BookController < ApplicationController
    book = books.first
    render :json => book   
   end
+  def mybook
+    render :json => current_user.books
+  end
 end
