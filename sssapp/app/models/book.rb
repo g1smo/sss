@@ -1,4 +1,4 @@
-class Thing
+class Book
   include Mongoid::Document
   
   field :isbn        , type: String
@@ -10,6 +10,6 @@ class Thing
   field :year        , type: String
   field :categories  , type: String
   field :language    , type: String
-  
-  has_one :user
+
+  belongs_to :user
 end
