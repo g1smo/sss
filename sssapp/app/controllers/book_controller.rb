@@ -17,4 +17,11 @@ class BookController < ApplicationController
 
   def update
   end
+  def lookup
+   @isbn = params[:id]
+   require 'googlebooks'
+   books = GoogleBooks.search('isbn:'+@isbn)  #9781443411080') 
+   book = books.first
+   render :json => book   
+  end
 end
