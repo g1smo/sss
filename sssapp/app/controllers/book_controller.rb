@@ -20,17 +20,20 @@ class BookController < ApplicationController
     render :json => book
   end
 
+  def delete
+    @book = Book.find(params[:id])
+  end
+
   def destroy
     Book.find(params[:id]).destroy
   end
 
   def update
     @book = Book.find(params[:id])
-    if @book.update_attributes(books_params) #
-      redirect_to(:action => 'show', :id => @book.id)
-    else
-      render('edit')
-    end
+  #  if @book.update_attributes(books_params) #
+   # else
+    #  render('edit')
+    #end
   end
   def lookup
    @isbn = params[:id]

@@ -22,6 +22,7 @@ class router extends Backbone.Router
     "": "home"
     "books/browse": "allBooks"
     "books/mine": "myBooks"
+    "books/add": "addBook"
 
   home: ->
     console.log "home!"
@@ -45,6 +46,12 @@ class router extends Backbone.Router
 
     books.on "sync", =>
       @show view
+
+  addBook: ->
+    book = new Sssapp.Models.Book
+    view = new Sssapp.Views.BookAdd
+
+    @show view
 
   show: (view) ->
     app.main.show view

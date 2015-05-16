@@ -16,6 +16,13 @@
   </thead>
   <tbody>
   </tbody>
+  <tfoot>
+    <tr>
+      <td>
+        <a href="#books/add" class="btn btn-primary">add book</a>
+      </td>
+    </tr>
+  </tfoot>
 </script>
 
 <script id="book-list-item-tpl" type="text/html">
@@ -29,5 +36,49 @@
   <td><%%= title %></td>
   <td><%%= authors %></td>
   <td><a href="#books/edit/<%%= _id %>">Edit</a></td>
-  <td><a href="#" data-ui-click="delete">Delete</a></td>
+  <td><a data-ui-click="delete">Delete</a></td>
+</script>
+
+<script id="book-add-tpl" type="text/html">
+   <form role="form-horizontal">
+  <div class="form-group">
+    <label for="isbn">Isbn</label>
+    <input type="text" class="form-control" id="isbn" placeholder="Enter isbn to search for books meta!">
+  </div>
+  <div class="form-group">
+    <label for="title">Title:</label>
+    <input type="text" class="form-control" id="title">
+  </div>
+  <div class="form-group">
+    <label for="authors">Author:</label>
+    <input type="text" class="form-control" id="authors">
+  </div>
+  <div class="form-group">
+    <label for="publisher">Publisher:</label>
+    <input type="text" class="form-control" id="publisher">
+  </div>
+  <div class="form-group">
+    <label for="description">Description:</label>
+    <input type="text" class="form-control" id="description">
+  </div>
+  <div class="form-group">
+    <label for="year">year:</label>
+    <input type="text" class="form-control" id="year">
+  </div>
+  <div class="form-group">
+    <label for="categories">Categories:</label>
+    <input type="text" class="form-control" id="categories">
+  </div>
+ <div class="form-group">
+    <label for="language">Language:</label>
+    <input type="text" class="form-control" id="language">
+  </div>
+ <div class="form-group">
+    <label for="image_link">Image link:</label>
+    <input type="text" class="form-control" id="image_link">
+  </div>
+  <button type="submit" class="btn btn-default">Add book</button>
+</form>
+
+
 </script>
