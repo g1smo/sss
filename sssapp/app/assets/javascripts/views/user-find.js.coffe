@@ -1,0 +1,10 @@
+class Sssapp.Views.UserListitem extends Marionette.ItemView
+  template: "#find-user"
+  tagName: "tr"
+
+class Sssapp.Views.UserList extends Marionette.CompositeView
+  template: "#book-list-tpl"
+  tagName: "table"
+  className: "table table-hover"
+  childViewContainer: "tbody"
+  childView: Sssapp.Views.UserListItem
