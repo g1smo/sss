@@ -1,2 +1,36 @@
 <div id="sidebar"></div>
 <div id="main"></div>
+
+<h1> hello </h1>
+<% require 'googlebooks'
+	@books = GoogleBooks.search('isbn:9789612375744') # yields a collection of one result
+	@bookss = GoogleBooks.search('ruby', {:count => 10})
+	@book =  @books.first # the one result
+%>
+
+<h1>isbn test</h1>
+<%= @book.title %>|
+<%= @book.authors %>|
+<%=	@book.publisher %>|
+<%= @book.published_date %>|
+<br />
+<br />
+<%= @book.title %> <br/>
+<%= @book.titles_array[0]  %><br />
+<%= @book.authors  %><br />
+<%= @book.authors_array[0]  %><br />
+<%= @book.publisher %><br />
+<%= @book.published_date %><br />
+<%= @book.description %><br />
+<%= @book.isbn  %><br />
+<%= @book.isbn_10  %><br />
+<%= @book.isbn_13  %><br />
+<%= @book.page_count %><br />
+<%= @book.print_type %><br />
+<%= @book.categories   %><br />
+<%= @book.average_rating %><br />
+<%= @book.ratings_count %><br />
+<%= @book.language %><br />
+<%= @book.preview_link %><br />
+<%= @book.info_link %><br />
+<%= @book.image_link  %><br />
