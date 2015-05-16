@@ -1,0 +1,2 @@
+<% book = GoogleBooks.search("Game of thrones").first %>
+<img class="img-thumbnail" src="<%= book.image_link(:zoom => 1 ) %>" alt="<%= book.title %>"> 
