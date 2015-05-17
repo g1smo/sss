@@ -2,7 +2,6 @@ window.Sssapp =
   Models: {}
   Collections: {}
   Views: {}
-  Routers: {}
 
 app = new Marionette.Application
 window.Sssapp.App = app
@@ -19,10 +18,12 @@ app.on "before:start", ->
 
 class router extends Backbone.Router
   routes:
-    "": "home"
-    "books/browse": "allBooks"
-    "books/mine": "myBooks"
-    "books/add": "addBook"
+    ""             : "home"
+    "books/browse" : "allBooks"
+    "books/mine"   : "myBooks"
+    "books/add"    : "addBook"
+    "users"        : "userList"
+    "users/:id"    : "userBooks"
 
   home: ->
     console.log "home!"
@@ -50,6 +51,26 @@ class router extends Backbone.Router
   addBook: ->
     book = new Sssapp.Models.Book
     view = new Sssapp.Views.BookAdd
+      model: book
+
+    @show view
+
+  userList: ->
+    collection = new Sssapp.Models.Users
+    collection.fetch()
+
+    view = new Sssapp.Views.UserList
+      collection: collection
+
+    @show view
+
+  userBooks: (id) ->
+    collection = new Sssapp.Models.UserBooks
+    collection.user = id
+    collection.fetch()
+
+    view = new Sssapp.Views.BookList
+      collection: collection
 
     @show view
 
@@ -57,7 +78,7 @@ class router extends Backbone.Router
     app.main.show view
 
 app.addInitializer ->
-  a = new router
+  window.Sssapp.Router = new router
   Backbone.history.start()
 
 $ ->

@@ -40,12 +40,24 @@ class User
   # field :unlock_token,    type: String # Only if unlock strategy is :email or :both
   # field :locked_at,       type: Time
   has_many :books
-  has_many :loans
+  #has_many :loans
   
   def create_loan_request(desiredBook)
     Request.create(
       book_id: desiredBook._id, 
       user_id: this._id
     )
+  end
+
+  def as_json(options = {})
+      {
+          _id: _id,
+          email: email,
+          num_books: num_books
+      }
+  end
+
+  def num_books
+      books.length
   end
 end

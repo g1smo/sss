@@ -1,14 +1,6 @@
 class BookController < ApplicationController
   def index
-    @books = Book.includes
-
-    @books.each do |book| 
-      @user = User.find(book.user_id)
-      book.user = @user
-    end
-
-    #@books = Book.find(2, :include => [:user])
-    render :json => @books
+    render :json => Book.all
   end
 
   def show
@@ -16,25 +8,21 @@ class BookController < ApplicationController
   end
 
   def create
-    book = Book.create! params
+    book = Book.new book_params
+    book.user = current_user
+    book.save
     render :json => book
-  end
-
-  def delete
-    @book = Book.find(params[:id])
   end
 
   def destroy
     Book.find(params[:id]).destroy
+    render :json => ""
   end
 
   def update
     @book = Book.find(params[:id])
-  #  if @book.update_attributes(books_params) #
-   # else
-    #  render('edit')
-    #end
   end
+
   def lookup
    @isbn = params[:id]
    require 'googlebooks'
@@ -42,7 +30,23 @@ class BookController < ApplicationController
    book = books.first
    render :json => book  
   end
+
   def mybook
     render :json => current_user.books
   end
+
+  def userList
+      render :json => User.all
+  end
+
+  def user
+      render :json => User.find(params[:id]).books
+  end
+
+  private
+
+    def book_params
+      params.require(:book).permit(:isbn, :title, :authors, :publisher, :description, :image_link, :year, :categories, :language)
+    end
+
 end

@@ -13,4 +13,23 @@ class Book
   field :language    , type: String
 
   belongs_to :user
+
+  def as_json(options = {})
+      {
+          _id: _id,
+          isbn: isbn,
+          title: title,
+          authors: authors,
+          publisher: publisher,
+          description: description,
+          image_link: image_link,
+          year: year,
+          categories: categories,
+          language: language,
+          user: user
+      }
+  end
+
+  #attr_accessible :isbn, :title, :authors, :publisher, :description, :image_link, :year, :categories, :language
+
 end

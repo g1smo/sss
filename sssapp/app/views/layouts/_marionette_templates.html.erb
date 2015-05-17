@@ -6,44 +6,58 @@
 </script>
 
 <script id="book-list-tpl" type="text/html">
-  <thead>
-    <tr>
-      <td>Title</td>
-      <td>Author</td>
-      <td>User</td>
-      <td>Actions</td>
-    </tr>
-  </thead>
-  <tbody>
-  </tbody>
-  <tfoot>
-    <tr>
-      <td>
-        <a href="#Books/add" class="btn btn-primary">add book</a>
-      </td>
-    </tr>
-  </tfoot>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <td>Title</td>
+        <td>Author</td>
+        <td>User</td>
+        <td>Actions</td>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+</script>
+
+<script id="book-list-mine-tpl" type="text/html">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <td>Title</td>
+        <td>Author</td>
+        <td>Actions</td>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+  <a href="#books/add" class="btn btn-primary">Add Book</a>
 </script>
 
 <script id="book-list-item-tpl" type="text/html">
   <td><%%= title %></td>
   <td><%%= authors %></td>
-  <td><a href="#users/show/<%%= user_id %>"><%%= user_id %></td>
+  <td><a href="#users/show/<%%= user._id %>"><%%= user.email %></td>
   <td><a href="#books/borrow/<%%= _id %>">Borrow</a></td>
 </script>
 
 <script id="book-list-item-mine-tpl" type="text/html">
   <td><%%= title %></td>
   <td><%%= authors %></td>
-  <td><a href="#books/edit/<%%= _id %>">Edit</a></td>
-  <td><a data-ui-click="delete">Delete</a></td>
+  <td><a href="#books/edit/<%%= _id %>">Edit</a> | <a href="#" data-ui-click="delete">Delete</a></td>
 </script>
 
 <script id="book-add-tpl" type="text/html">
- <form role="form-horizontal">
-  <div clas="form-group">
-    <label for="isbn">Isbn</label>
-    <input type="text" class="form-control" name="isbn" placeholder="Enter isbn to search for books meta!">
+ <form role="form-horizontal" method="post">
+  <div class="form-group">
+    <label for="isbn">ISBN</label>
+    <div class="input-group">
+      <input type="text" class="form-control" name="isbn" placeholder="Enter ISBN to look up book metadata!">
+      <span class="input-group-btn">
+        <button data-ui-click="lookup-isbn" class="btn btn-primary" type="button"><span class="glyphicon glyphicon-search"></span></button>
+      </span>
+    </div>
   </div>
   <div class="form-group">
     <label for="title">Title:</label>
@@ -62,7 +76,7 @@
     <input type="text" class="form-control" name="description">
   </div>
   <div class="form-group">
-    <label for="year">year:</label>
+    <label for="year">Year:</label>
     <input type="text" class="form-control" name="year">
   </div>
   <div class="form-group">
@@ -77,25 +91,24 @@
     <label for="image_link">Image link:</label>
     <input type="text" class="form-control" name="image_link">
   </div>
-  <input type="submit" class="btn btn-default">
+  <input type="submit" class="btn btn-primary">
 </form>
 </script>
 
-<script id="find-user-tpl" type="text/html">
-   <thead>
-    <tr>
-      <td>User</td>
-      <td>Numberofbooks</td>
-      <td>Actions</td>
-    </tr>
-  </thead>
-  <tbody>
-  </tbody>
+<script id="user-list-tpl" type="text/html">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <td>User</td>
+        <td>Number of Books</td>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
 </script>
 
-<script id="find-user-item-tpl" type="text/html">
-  <td><%%= title %></td>
-  <td><%%= authors %></td>
-  <td><a href="#users/show/<%%= user_id %>"><%%= user_id %></td>
-  <td><a href="#books/borrow/<%%= _id %>">Borrow</a></td>
+<script id="user-list-item-tpl" type="text/html">
+  <td><a href="#users/<%%= _id %>"><%%= email %></a></td>
+  <td><%%= num_books %></td>
 </script>
