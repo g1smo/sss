@@ -25,6 +25,7 @@ class User
 
   ## Confirmable
   # field :confirmation_token,   type: String
+  
   # field :confirmed_at,         type: Time
   # field :confirmation_sent_at, type: Time
   # field :unconfirmed_email,    type: String # Only if using reconfirmable
@@ -34,4 +35,7 @@ class User
   # field :unlock_token,    type: String # Only if unlock strategy is :email or :both
   # field :locked_at,       type: Time
   has_many :books
+  has_many :loans
+  
+  
 end

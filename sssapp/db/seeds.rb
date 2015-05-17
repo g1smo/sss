@@ -12,14 +12,38 @@ user = User.create(
     password_confirmation: "testingthis"
 )
 
+user2 = User.create(
+  email: "pest@mail.com",
+  password: "pestingthis",
+  password_confirmation: "pestingthis"
+)
+
 book = Book.create(
     isbn: "12398192381923",
     title: "Kniga!",
-    authors: "Marting Heidegger, Ivan Cankar",
+    authors: "Martin Heidegger, Ivan Cankar",
     publisher: "Dobre knige",
     description: "A very fine book, indeed",
     year: 1984,
     categories: "good,read,awesome,book",
     language: "english",
     user_id: 1
+)
+
+request = Request.create(
+  approved: true,
+  
+  user_id: 2,
+  book_id: 1
+)
+
+loan = Loan.create(
+  confirmedByBorrower: true,
+  confirmedByLender: true,
+  returnBy: Date.new(2015,5,20),
+  
+  loan_extensions: [LoanExtension.new(returnBy: Date.new(2015,5,25))],
+  book_id: 1,
+  user_id: 2,
+  request_id: 1
 )
