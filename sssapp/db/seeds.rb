@@ -38,11 +38,21 @@ request = Request.create(
 )
 
 loan = Loan.create(
-  confirmedByBorrower: true,
-  confirmedByLender: true,
-  returnBy: Date.new(2015,5,20),
+  confirmed_by_borrower: true,
+  confirmed_by_lender: true,
+  return_by: Date.new(2015,5,20),
   
-  loan_extensions: [LoanExtension.new(returnBy: Date.new(2015,5,25))],
+  loan_extensions: [LoanExtension.new(return_by: Date.new(2015,5,25))],
+  book_id: 1,
+  user_id: 2,
+  request_id: 1
+)
+
+loan = Loan.create(
+  confirmed_by_borrower: true,
+  confirmed_by_lender: true,
+  return_by: Date.new(2016,1,11),
+  
   book_id: 1,
   user_id: 2,
   request_id: 1

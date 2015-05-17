@@ -1,5 +1,7 @@
 class User
   include Mongoid::Document
+  include Mongoid::Timestamps
+  
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -17,11 +19,14 @@ class User
   field :remember_created_at, type: Time
 
   ## Trackable
-  field :sign_in_count,      type: Integer, default: 0
-  field :current_sign_in_at, type: Time
-  field :last_sign_in_at,    type: Time
-  field :current_sign_in_ip, type: String
-  field :last_sign_in_ip,    type: String
+  field :sign_in_count,       type: Integer, default: 0
+  field :current_sign_in_at,  type: Time
+  field :last_sign_in_at,     type: Time
+  field :current_sign_in_ip,  type: String
+  field :last_sign_in_ip,     type: String
+  
+  # user's preferred duration of loans in days
+  field :preferredLoanDuration, type: Integer, default: 14 
 
   ## Confirmable
   # field :confirmation_token,   type: String
@@ -37,5 +42,10 @@ class User
   has_many :books
   has_many :loans
   
-  
+  def create_loan_request(desiredBook)
+    Request.create(
+      book_id: desiredBook._id, 
+      user_id: this._id
+    )
+  end
 end

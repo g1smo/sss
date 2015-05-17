@@ -1,5 +1,6 @@
 class Book
   include Mongoid::Document
+  include Mongoid::Timestamps
   
   field :isbn        , type: String
   field :title       , type: String
