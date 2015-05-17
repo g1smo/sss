@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'request/create'
+
   get '/book/mybook', to: 'book#mybook'
   resources :book
   

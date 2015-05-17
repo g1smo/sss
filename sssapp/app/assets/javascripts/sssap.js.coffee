@@ -27,7 +27,9 @@ class router extends Backbone.Router
     "books/edit/:id" : "editBook"
 
   home: ->
-    console.log "home!"
+    view = new Sssapp.Views.IndexView
+      
+    @show view
 
   allBooks: ->
     books = new Sssapp.Models.Books
