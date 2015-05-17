@@ -1,26 +1,31 @@
 class Request
   include Mongoid::Document
   include Mongoid::Timestamps
+# Lend state meanings: 
+#  0 - requested, 
+#  1 - approved and lent, 
+#  2 - returned book
+#  3 - request denied
   
-  field :a, as: :approved, type: Boolean, default: false
+  field :s, as: :lend_state, type: Int, default: 0
   
   belongs_to :book
-  belongs_to :user  
+  belongs_to :user
   has_one :loan
   
-  def approve(return_date)
-    approved = true
-    cancelled = false
-    Loan.create(
-      return_by: return_date,
-      request_id: this._id
-      
-    )
+  def approved
+    if lend_state != 2
+      lend_state = 1
+    end
   end
   
-  def cancel_approval
-    approved = false
-    cancelled = true
-    Loan.where(request_id: this._id).drop
+  def return_book 
+    if lend_state == 1
+      lend_state = 2
+    end
+  end
+  
+  def deny_request
+    lend_state = 3
   end  
 end
