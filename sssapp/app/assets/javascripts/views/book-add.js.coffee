@@ -28,7 +28,12 @@ class Sssapp.Views.BookAdd extends Marionette.ItemView
     model.fetch()
     model.on "sync", (data) =>
       @$("input").attr "disabled", false
+      @populateForm data
       
-      _.each _.keys(data.attributes), (key) ->
-        @$("input[name=#{key}]").val data.get key
 
+  populateForm: (data) ->
+    _.each _.keys(data.attributes), (key) ->
+      @$("input[name=#{key}]").val data.get key
+
+  onShow: ->
+    @$("[name=isbn]").select()

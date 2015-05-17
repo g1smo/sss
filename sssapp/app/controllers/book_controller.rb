@@ -8,10 +8,10 @@ class BookController < ApplicationController
   end
 
   def create
-    book = Book.new book_params
-    book.user = current_user
-    book.save
-    render :json => book
+    @book = Book.new book_params
+    @book.user = current_user
+    @book.save
+    render :json => @book
   end
 
   def destroy
@@ -21,6 +21,8 @@ class BookController < ApplicationController
 
   def update
     @book = Book.find(params[:id])
+    @book.update book_params
+    render :json => @book
   end
 
   def lookup

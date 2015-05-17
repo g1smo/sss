@@ -18,12 +18,13 @@ app.on "before:start", ->
 
 class router extends Backbone.Router
   routes:
-    ""             : "home"
-    "books/browse" : "allBooks"
-    "books/mine"   : "myBooks"
-    "books/add"    : "addBook"
-    "users"        : "userList"
-    "users/:id"    : "userBooks"
+    ""               : "home"
+    "books/browse"   : "allBooks"
+    "books/mine"     : "myBooks"
+    "books/add"      : "addBook"
+    "users"          : "userList"
+    "users/:id"      : "userBooks"
+    "books/edit/:id" : "editBook"
 
   home: ->
     console.log "home!"
@@ -52,6 +53,21 @@ class router extends Backbone.Router
     book = new Sssapp.Models.Book
     view = new Sssapp.Views.BookAdd
       model: book
+
+    @show view
+
+  editBook: (id) ->
+    book = new Sssapp.Models.Book
+    book.id = id
+    book.fetch()
+
+    view = new Sssapp.Views.BookAdd
+      model: book
+
+    @listenTo book, "sync", ->
+      view.populateForm book
+
+    @listenTo view, "all", (ev) ->
 
     @show view
 
