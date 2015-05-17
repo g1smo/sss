@@ -37,7 +37,14 @@ class router extends Backbone.Router
       @show view
 
   myBooks: ->
-    console.log "list my books"
+    books = new Sssapp.Models.MyBooks
+    books.fetch()
+
+    view = new Sssapp.Views.BookListMine
+      collection: books
+
+    books.on "sync", =>
+      @show view
 
   show: (view) ->
     app.main.show view

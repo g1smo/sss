@@ -20,7 +20,14 @@
 
 <script id="book-list-item-tpl" type="text/html">
   <td><%%= title %></td>
-  <td>Authors</td>
-  <td>Some user</td>
-  <td>asdokaosdkoasd</td>
+  <td><%%= authors %></td>
+  <td><a href="#users/show/<%%= user_id %>"><%%= user_id %></td>
+  <td><a href="#books/borrow/<%%= _id %>">Borrow</a></td>
+</script>
+
+<script id="book-list-item-mine-tpl" type="text/html">
+  <td><%%= title %></td>
+  <td><%%= authors %></td>
+  <td><a href="#books/edit/<%%= _id %>">Edit</a></td>
+  <td><a href="#" data-ui-click="delete">Delete</a></td>
 </script>
