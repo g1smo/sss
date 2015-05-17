@@ -1,1 +1,10 @@
+#= require jquery
+#= require jquery_ujs
+#= require turbolinks
+#= require underscore
+#= require backbone
 #= require backbone.marionette
+#= require sssap
+#= require_tree ./models
+#= require_tree ./views
+#= require_tree .
