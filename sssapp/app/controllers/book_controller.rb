@@ -24,7 +24,6 @@ class BookController < ApplicationController
     @book.update book_params
     render :json => @book
   end
-
   def lookup
    @isbn = params[:id]
    require 'googlebooks'

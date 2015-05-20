@@ -4,6 +4,6 @@ Lender - a social book sharing site
 Licensed under the AGPL license.
 
 Draguljčki:
-Matej Ferenc
+Matej Ferenc (ferenc.matej@gmail.com)
 Martin Krauser
 Jurij Podgoršek
