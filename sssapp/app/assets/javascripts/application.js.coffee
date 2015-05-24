@@ -8,3 +8,4 @@
 #= require_tree ./models
 #= require_tree ./views
 #= require_tree .
+#= require bootstrap-sprockets

@@ -1,11 +1,32 @@
 <script id="sidebar-tpl" type="text/html">
-  <li class="list-group-item"><a href="#books/browse">Browse Books</a></li>
-  <li class="list-group-item"><a href="#books/mine">My Books</a></li>
-  <li class="list-group-item"><a href="#books/borrowed">Borrowed Books</a></li>
-  <li class="list-group-item"><a href="#users">Find Users</a></li>
+  <div class="collapse navbar-collapse navbar-ex1-collapse" >
+    <ul class="nav navbar-nav side-nav">
+     <li>
+       <a href="#books/browse"><i class="fa fa-fw fa-dashboard"></i> Browse Books</a>
+     </li>
+     <li>
+      <a href="#books/mine"><i class="fa fa-fw fa-bar-chart-o"></i> My Books</a>
+      </li>
+      <li>
+        <a href="#books/borrowed"><i class="fa fa-fw fa-table"></i> Borwed</a>
+      <li>
+      <li>
+       <a href="#users"><i class="fa fa-fw fa-table"></i> Find User</a>
+      <li>
+    </ul>
+  </div>
+  
 </script>
 
 <script id="book-list-tpl" type="text/html">
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">
+         Books <small>From Users</small>
+      </h1>
+    </div>
+  </div>
+<!-- /.row -->
   <table class="table table-hover">
     <thead>
       <tr>
@@ -21,6 +42,14 @@
 </script>
 
 <script id="book-list-mine-tpl" type="text/html">
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">
+         My Books
+      </h1>
+    </div>
+  </div>
+<!-- /.row -->
   <table class="table table-hover">
     <thead>
       <tr>
@@ -49,6 +78,13 @@
 </script>
 
 <script id="book-add-tpl" type="text/html">
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">
+         Add<small> Book</small>
+      </h1>
+    </div>
+  </div>
  <form role="form-horizontal" method="post">
   <div class="form-group">
     <label for="isbn">ISBN</label>
@@ -88,6 +124,7 @@
 </script>
 
 <script id="user-list-tpl" type="text/html">
+  
   <table class="table table-hover">
     <thead>
       <tr>
